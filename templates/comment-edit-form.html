@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% block stylesheet %}
+    <link rel="stylesheet" href="../../../css/bootstrap.min.css">
+    <style type="text/css">
+      .error {color: red}
+      textarea {
+        width: 500px;
+        height: 200px;
+        font-size: 17px;
+        font-family: monospace;
+      }
+    </style>
+{% endblock %}
+
+{% block content %}
+    <br>
+    <br>
+    <div class="container">
+        <form method = "post">
+            <h3 class="text-left">Edit your comment here:</h3>
+            <textarea name="comment">{{comment}}</textarea>
+                <div class="radio">
+                    <label><input type="radio" name="action" value = "edit_save">Save changes</label>
+                </div>
+                <div class="radio">
+                    <label><input type="radio" name="action" value = "edit_discard">Discard changes</label>
+                </div>
+                <div class="radio">
+                    <label><input type="radio" name="action" value = "delete">Delete the comment</label>
+                </div>
+                <div class="error">{{error}}</div>
+                <input type = "submit">
+        </form>
+    </div>
+
+{% endblock %}

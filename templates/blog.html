@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+
+{% block stylesheet %}
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+      <div class="jumbotron">
+          <h1>Hello, world!</h1>
+              <p>My name is Shumei Lin. This is my first multi user blog. Feel free to play around with it.</p>
+      </div>
+
+      {% for p in posts %}
+          <div class="row text-center">
+
+              <h1>{{p.title}}</h1>
+              <p>{{p.content}} </p>
+              <a href="/{{ p.key().id() }}" class="btn btn-info">View details</a>
+
+          </div>
+
+
+      {% endfor %}
+
+    </div> <!-- /container -->
+
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous">
+    </script>
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function(){
+
+            //Check if the current URL contains '#'
+            if(document.URL.indexOf("#")==-1)
+            {
+                // Set the URL to whatever it was plus "#".
+                url = document.URL+"#";
+                location = "#";
+
+                //Reload the page
+                location.reload(true);
+
+            }
+        });
+    </script>
+{% endblock %}
+

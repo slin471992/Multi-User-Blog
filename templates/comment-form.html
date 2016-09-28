@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block stylesheet %}
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <style type="text/css">
+      textarea {
+        width: 500px;
+        height: 200px;
+        font-size: 17px;
+        font-family: monospace;
+      }
+    </style>
+{% endblock %}
+
+{% block content %}
+    <div class = "container">
+        <form method = "post">
+
+            <h3 class="text-left">Add your comments here:</h3>
+
+            <textarea name="comment">{{comment}}</textarea>
+
+            <div class="error">{{error}}</div>
+
+            <input type = "submit">
+        </form>
+    </div>
+
+{% endblock %}

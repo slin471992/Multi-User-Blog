@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+
+{% block stylesheet %}
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+{% endblock %}
+
+{% block content %}
+    <br>
+    <br>
+    <div class = "container">
+        <div class="row">
+            <div class="post-title"><h1>Title: {{post.title}}</h1></div>
+            <pre class="post-content">{{post.content}}</pre>
+            <p>by: {{post.author}} at {{post.last_modified}}</p>
+        </div>
+
+        <div class = "btn-group">
+
+            <a class="btn btn-info" href="/like/{{ post.key().id() }}" role="button">Like: {{like_total}}</a>
+            <a class="btn btn-info" href="/comment/{{ post.key().id() }}" role="button">Comment</a>
+            <a class="btn btn-info" href="/edit/{{ post.key().id() }}" role="button">Edit</a>
+            <a class="btn btn-info" href="/delete/{{ post.key().id() }}" role="button">Delete</a>
+        </div>
+
+        <br>
+        <br>
+        <div class = "row text-left">
+            <h3>Comments:</h3>
+                {% for c in comments %}
+
+                    <h4 class="bold">{{c.comment}}</h4>
+                    <p>by: {{c.author}} at {{c.last_modified}}</p>
+                    <a class="btn btn-info btn-sm" href="/comment/{{ post.key().id() }}/edit/{{ c.key().id() }}" role="button">Edit / Delete</a>
+                    <br>
+                    <br>
+                {% endfor %}
+
+        </div>
+    </div> <!-- Container -->
+
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous">
+    </script>
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function(){
+
+            //Check if the current URL contains '#'
+            if(document.URL.indexOf("#")==-1)
+            {
+                // Set the URL to whatever it was plus "#".
+                url = document.URL+"#";
+                location = "#";
+
+                //Reload the page
+                location.reload(true);
+
+            }
+        });
+    </script>
+
+{% endblock %}

@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block stylesheet %}
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <style type="text/css">
+      .error {color: red}
+    </style>
+{% endblock %}
+
+{% block content %}
+    <br>
+    <br>
+    <div class="container">
+
+        <form method = "post">
+
+
+            <div class="radio">
+                <label><input type="radio" name="action" value = "like">Like the post</label>
+            </div>
+            <div class="radio">
+                <label><input type="radio" name="action" value = "unlike">Cancel your previous like</label>
+            </div>
+
+            <div class="error">{{error}}</div>
+
+            <input type = "submit">
+        </form>
+
+    </div>
+
+{% endblock %}
